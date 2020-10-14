@@ -122,7 +122,7 @@ export default {
     confirm () {
       this.arrayData = { dataId: this.$store.state.Dataid, name: this.name, num: this.num, size: this.size, yihol: this.yihol, price: this.price }
       this.$store.commit('increment')
-      this.$store.commit('regis', this.array)
+      this.$store.commit('regis', this.arrayData)
     }
   }
 }
