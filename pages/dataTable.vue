@@ -23,16 +23,17 @@ export default {
         value: 'dataId'
       },
       {
-        text: 'ชื่อวัตถุดิบ',
+        text: 'product',
         value: 'name'
       },
       {
-        text: 'จำนวน',
-        value: 'num'
+        text: 'original',
+        value: 'original'
       },
-      { text: 'ขนาด', value: 'size' },
-      { text: 'ยี่ห่อ', value: 'yihol' },
-      { text: 'ราคา', value: 'price' }
+      { text: 'buymore', value: 'buymore' },
+      { text: 'sell', value: 'sell' },
+      { text: 'left', value: 'left' },
+      { text: 'addproduct', value: 'addproduct' }
     ]
   })
 }

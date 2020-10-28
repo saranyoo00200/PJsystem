@@ -50,12 +50,80 @@
       </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+      <div class="text-center">
+        <v-dialog
+          v-model="dialog"
+          width="500"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              icon
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon>mdi-shopping</v-icon>
+            </v-btn>
+          </template>
+
+          <v-card>
+            <v-card-title class="headline grey mb-2">
+              ยืนยันการสั่งซื้อ
+            </v-card-title>
+
+            <v-card-text>
+              รายการอาหาร<br>
+              . <br>
+              .<br>
+              .<br>
+              .<br>
+              .<br>
+              .<br>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer />
+              <v-btn
+                color="primary"
+                text
+                @click="dialog = false"
+              >
+                ยกเลิก
+              </v-btn>
+              <v-btn
+                color="primary"
+                text
+                @click="dialog = false"
+              >
+                ยืนยัน
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </div>
+      <div class="text-center">
+        <v-menu offset-y>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              icon
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon>mdi-brightness-5</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item>
+              <v-list-item-title li>
+                <nuxt-link
+                  to="/login"
+                  no-prefetch
+                >
+                  <v-icon>mdi-login</v-icon> login
+                </nuxt-link>
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -67,18 +135,7 @@
       :right="right"
       temporary
       fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    />
     <v-footer
       :absolute="!fixed"
       app
@@ -95,22 +152,27 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      dialog: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-menu',
+          title: 'MENU',
           to: '/'
-        },
-        {
+        }, {
           icon: 'mdi-book',
-          title: 'Add',
+          title: 'add',
           to: '/addData'
-        },
-        {
-          icon: 'mdi-table-large',
-          title: 'Table',
+        }, {
+          icon: 'mdi-table',
+          title: 'table',
           to: '/dataTable'
         }
+      ],
+      itemsto: [
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me 2' }
       ],
       miniVariant: false,
       right: true,

@@ -1,9 +1,30 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <div class="text-center">
-        <h1>หน้าเว็บ</h1>
+    <v-col>
+      <div class="">
+        <template>
+          <div>
+            <menus />
+          </div>
+        </template>
       </div>
     </v-col>
   </v-row>
 </template>
+
+<script>
+import menus from '@/components/menus'
+export default {
+  data () {
+    return {
+      components: {
+        menus
+      }
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>
