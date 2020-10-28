@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-flex class="text-center">
-      <div class="container fluid">
+      <div class="container">
         <div>
           <div>
             <div class="card-header">
@@ -17,35 +17,42 @@
                   <div class="form-group col-md-6">
                     <v-text-field
                       v-model="name"
-                      label="ชื่อวัตถุดิบ"
+                      label="productName"
                       required
                     />
                   </div>
                   <div class="form-group col-md-6">
                     <v-text-field
-                      v-model="num"
-                      label="จำนวน"
+                      v-model="original"
+                      label="original"
                       required
                     />
                   </div>
                   <div class="form-group col-md-6">
                     <v-text-field
-                      v-model="size"
-                      label="ขนาด"
+                      v-model="buymore"
+                      label="buymore"
                       required
                     />
                   </div>
                   <div class="form-group col-md-6">
                     <v-text-field
-                      v-model="yihol"
-                      label="ยี่ห่อ"
+                      v-model="sell"
+                      label="sell"
                       required
                     />
                   </div>
                   <div class="form-group col-md">
                     <v-text-field
-                      v-model="price"
-                      label="ราคา"
+                      v-model="left"
+                      label="left"
+                      required
+                    />
+                  </div>
+                  <div class="form-group col-md">
+                    <v-text-field
+                      v-model="addproduct"
+                      label="addproduct"
                       required
                     />
                   </div>
@@ -99,28 +106,31 @@ export default {
     name: '',
     loader: null,
     load: false,
-    num: '',
-    price: '' + 'บาท',
-    size: '',
+    original: '',
+    left: '',
+    buymore: '',
     sub: false,
     array: null,
-    yihol: null
+    sell: null,
+    addproduct: ''
+
   }),
   watch: {
     loader () {
       this.valid = true
       this.name = ''
       this.load = false
-      this.num = ''
-      this.price = ''
-      this.size = ''
-      this.yihol = null
+      this.original = ''
+      this.left = ''
+      this.buymore = ''
+      this.sell = ''
+      this.addproduct = ''
     }
   },
 
   methods: {
     confirm () {
-      this.arrayData = { dataId: this.$store.state.Dataid, name: this.name, num: this.num, size: this.size, yihol: this.yihol, price: this.price }
+      this.arrayData = { dataId: this.$store.state.Dataid, name: this.name, original: this.original, buymore: this.buymore, sell: this.sell, left: this.left, addproduct: this.addproduct }
       this.$store.commit('increment')
       this.$store.commit('regis', this.arrayData)
     }
