@@ -177,7 +177,9 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'RAN ARE HAN'
+      title: 'RAN ARE HAN',
+      messages: 0,
+      show: false
     }
   }
 }

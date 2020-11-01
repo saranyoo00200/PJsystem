@@ -9,24 +9,10 @@
         show-arrows-on-hover
       >
         <v-carousel-item
-          v-for="(slide, i) in slides"
+          v-for="(itemImage,i) in itemsImage"
           :key="i"
-        >
-          <v-sheet
-            :color="colors[i]"
-            height="100%"
-          >
-            <v-row
-              class="fill-height"
-              align="center"
-              justify="center"
-            >
-              <div class="display-3">
-                {{ slide }} Slide
-              </div>
-            </v-row>
-          </v-sheet>
-        </v-carousel-item>
+          :src="itemImage.src"
+        />
       </v-carousel>
     </div>
     <div>
@@ -50,11 +36,12 @@
           >
             <div class="d-flex flex-wrap">
               <v-card
-                v-for="menusid in items"
-                :key="menusid.title"
+                v-for="data in items"
+                :key="data.id"
+                elevation="24"
                 class="ma-2 mb-2"
                 max-width="400"
-                :to="{ name: 'pageInfo-id', params: { id: music } }"
+                :to="{}"
               >
                 <v-img
                   class="white--text align-end"
@@ -66,7 +53,7 @@
                 </v-img>
 
                 <v-card-subtitle class="pb-0">
-                  {{ item.content }}
+                  {{ data.content[0] }}
                 </v-card-subtitle>
 
                 <v-card-text class="text--primary">
@@ -87,87 +74,86 @@
 export default {
   data () {
     return {
-      colors: [
-        'indigo',
-        'warning',
-        'pink darken-2',
-        'red lighten-1',
-        'deep-purple accent-4'
-      ],
-      slides: [
-        'First',
-        'Second',
-        'Third',
-        'Fourth',
-        'Fifth'
+      itemsImage: [
+        {
+          src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+        },
+        {
+          src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+        },
+        {
+          src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
+        },
+        {
+          src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+        }
       ],
       tab: null,
-      tab1: null,
       items: [
         {
           id: 1,
           tab: 'อาหารใต้',
           content: [
-            { title: 'ไก่', price: '1' },
-            { title: 'ไข่', price: '2' },
-            { title: 'หมู', price: '3' },
-            { title: 'เป็ด ', price: '4' },
-            { title: 'เห็ด', price: '5' },
-            { title: 'กุ้ง', price: '6' },
-            { title: 'ปู', price: '7' },
-            { title: 'ของท่านเล่น', price: '8' }]
+            { title: 'ไก่', price: '10' },
+            { title: 'ไข่', price: '20' },
+            { title: 'หมู', price: '30' },
+            { title: 'เป็ด ', price: '40' },
+            { title: 'เห็ด', price: '50' },
+            { title: 'กุ้ง', price: '60' },
+            { title: 'ปู', price: '70' },
+            { title: 'ของท่านเล่น', price: '80' }]
         },
         {
           id: 2,
           tab: 'อาหารเหนือ',
           content: [
-            { title: 'ไก่', price: '1' },
-            { title: 'ไข่', price: '2' },
-            { title: 'หมู', price: '3' },
-            { title: 'เป็ด ', price: '4' },
-            { title: 'เห็ด', price: '5' },
-            { title: 'กุ้ง', price: '6' },
-            { title: 'ปู', price: '7' },
-            { title: 'ของท่านเล่น', price: '8' }]
+            { title: 'งู', price: '11' },
+            { title: 'ไข่', price: '21' },
+            { title: 'หมู', price: '31' },
+            { title: 'เป็ด ', price: '41' },
+            { title: 'เห็ด', price: '51' },
+            { title: 'กุ้ง', price: '61' },
+            { title: 'ปู', price: '71' },
+            { title: 'หมา', price: '81' }]
         },
         {
           id: 3,
           tab: 'อาหารทะเล',
           content: [
-            { title: 'มด', price: '1' },
-            { title: 'ไข่', price: '2' },
-            { title: 'หมู', price: '3' },
-            { title: 'เป็ด ', price: '4' },
-            { title: 'เห็ด', price: '5' },
-            { title: 'กุ้ง', price: '6' },
-            { title: 'ปู', price: '7' },
-            { title: 'ของท่านเล่น', price: '8' }]
+            { title: 'มด', price: '12' },
+            { title: 'ไข่', price: '22' },
+            { title: 'หมู', price: '32' },
+            { title: 'เป็ด ', price: '42' },
+            { title: 'เห็ด', price: '52' },
+            { title: 'กุ้ง', price: '62' },
+            { title: 'ปู', price: '72' },
+            { title: 'ของท่านเล่น', price: '82' }]
         },
         {
           id: 4,
           tab: 'น้ำดื่ม',
           content: [
-            { title: 'ไก่', price: '1' },
-            { title: 'ไข่', price: '2' },
-            { title: 'หมู', price: '3' },
-            { title: 'เป็ด ', price: '4' },
-            { title: 'เห็ด', price: '5' },
-            { title: 'กุ้ง', price: '6' },
-            { title: 'ปู', price: '7' },
-            { title: 'ของท่านเล่น', price: '8' }]
+            { title: 'ไก่', price: '13' },
+            { title: 'ไข่', price: '23' },
+            { title: 'หมู', price: '33' },
+            { title: 'เป็ด ', price: '43' },
+            { title: 'เห็ด', price: '53' },
+            { title: 'กุ้ง', price: '63' },
+            { title: 'ปู', price: '73' },
+            { title: 'ของท่านเล่น', price: '83' }]
         },
         {
           id: 5,
           tab: 'ของหวาน',
           content: [
-            { title: 'ไก่', price: '1' },
-            { title: 'ไข่', price: '2' },
-            { title: 'หมู', price: '3' },
-            { title: 'เป็ด ', price: '4' },
-            { title: 'เห็ด', price: '5' },
-            { title: 'กุ้ง', price: '6' },
-            { title: 'ปู', price: '7' },
-            { title: 'ของท่านเล่น', price: '8' }]
+            { title: 'ไก่', price: '14' },
+            { title: 'ไข่', price: '24' },
+            { title: 'หมู', price: '34' },
+            { title: 'เป็ด ', price: '44' },
+            { title: 'เห็ด', price: '54' },
+            { title: 'กุ้ง', price: '64' },
+            { title: 'ปู', price: '74' },
+            { title: 'ของท่านเล่น', price: '84' }]
         },
         {
           id: 6,
@@ -184,6 +170,18 @@ export default {
         },
         {
           id: 7,
+          tab: 'ของท่านเล่น',
+          content: [
+            { title: 'ไก่', price: '1' },
+            { title: 'ไข่', price: '2' },
+            { title: 'หมู', price: '3' },
+            { title: 'เป็ด ', price: '4' },
+            { title: 'เห็ด', price: '5' },
+            { title: 'กุ้ง', price: '6' },
+            { title: 'ปู', price: '7' },
+            { title: 'ของท่านเล่น', price: '8' }]
+        }, {
+          id: 8,
           tab: 'ของท่านเล่น',
           content: [
             { title: 'ไก่', price: '1' },
